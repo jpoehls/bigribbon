@@ -35,7 +35,7 @@ class Book : CustomStringConvertible {
     static let neh = Book(id:16, osisId:"Neh", name:"Nehemiah", chapters:13)
     static let esth = Book(id:17, osisId:"Esth", name:"Esther", chapters:10)
     static let job = Book(id:18, osisId:"Job", name:"Job", chapters:42)
-    static let ps = Book(id:19, osisId:"Ps", name:"Psalms", chapters:150)
+    static let ps = Book(id:19, osisId:"Ps", name:"Psalm", chapters:150)
     static let prov = Book(id:20, osisId:"Prov", name:"Proverbs", chapters:31)
     static let eccl = Book(id:21, osisId:"Eccl", name:"Ecclesiastes", chapters:12)
     static let song = Book(id:22, osisId:"Song", name:"Song of Solomon", chapters:8)
