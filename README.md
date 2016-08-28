@@ -1,6 +1,6 @@
 # Big Ribbon
 
-*Big Ribbon* is an iOS app for keeping track of your bookmarks in the Professor [Grant Horner Bible Reading System](https://github.com/jpoehls/bigribbon/raw/master/misc/professor-grant-horners-bible-reading-system.pdf).
+*Big Ribbon* is an iOS app for keeping track of your bookmarks in the [Professor Grant Horner Bible Reading System](https://github.com/jpoehls/bigribbon/blob/master/misc/professor-grant-horners-bible-reading-system.pdf).
 
 It may eventually support other reading plans, or not.
 
