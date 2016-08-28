@@ -63,9 +63,7 @@ class BookmarkViewController: UIViewController, UITableViewDataSource, UITableVi
         // Fetches the appropriate bookmark for the data source layout.
         let bookmark = bookmarks[(indexPath as NSIndexPath).row]
         
-        cell.nameLabel.text = "List " + bookmark.list.id.description
-        cell.daysLabel.text = bookmark.list.chapters.description + " days"
-        renderBookmarkPosition(cell, bookmark: bookmark)
+        renderBookmark(cell, bookmark: bookmark)
         
         cell.prevAction = { (cell) in
             let idx = (tableView.indexPath(for: cell)! as NSIndexPath).row
@@ -88,7 +86,7 @@ class BookmarkViewController: UIViewController, UITableViewDataSource, UITableVi
         
         self.saveBookmarks()
         
-        self.renderBookmarkPosition(cell, bookmark: bookmark)
+        self.renderBookmark(cell, bookmark: bookmark)
     }
     
     func decrementBookmark(_ cell: BookmarkTableViewCell, bookmark: Bookmark) {
@@ -97,12 +95,34 @@ class BookmarkViewController: UIViewController, UITableViewDataSource, UITableVi
         
         self.saveBookmarks()
         
-        self.renderBookmarkPosition(cell, bookmark: bookmark)
+        self.renderBookmark(cell, bookmark: bookmark)
     }
     
-    func renderBookmarkPosition(_ cell: BookmarkTableViewCell, bookmark: Bookmark) {
-        // TODO: Build a better string with formatting.
-        cell.booksLabel.attributedText = NSAttributedString(string: bookmark.book.name + " " + bookmark.chapter.description)
+    func renderBookmark(_ cell: BookmarkTableViewCell, bookmark: Bookmark) {
+        
+        cell.nameLabel.text = "List\u{00a0}" + bookmark.list.id.description
+        cell.daysLabel.text = bookmark.list.chapters.description + " days"
+        
+        let s = NSMutableAttributedString()
+        for i in 0 ..< bookmark.list.books.count {
+            let book = bookmark.list.books[i]
+            var txt = book.osisId
+            var attrs: [String:Any]?
+            if (book === bookmark.book) {
+                txt = book.name + "\u{00a0}" + bookmark.chapter.description
+                attrs = [
+                    NSFontAttributeName:UIFont.boldSystemFont(ofSize: cell.booksLabel.font.pointSize),
+                    NSForegroundColorAttributeName:cell.nameLabel.textColor
+                ]
+            }
+            
+            if i < bookmark.list.books.count-1 {
+                txt += ", "
+            }
+            
+            s.append(NSAttributedString(string: txt, attributes: attrs))
+        }
+        cell.booksLabel.attributedText = s
     }
     
     // MARK: NSCoding
