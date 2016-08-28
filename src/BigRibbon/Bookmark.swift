@@ -27,6 +27,7 @@ class Bookmark : NSObject, NSCoding {
     let list: ReadingList
     var book: Book
     var chapter: Int
+    var lastIncremented: NSDate?
     
     // MARK: Archiving Paths
     
@@ -45,6 +46,13 @@ class Bookmark : NSObject, NSCoding {
         self.chapter = chapter
     }
     
+    init(list: ReadingList, book: Book, chapter: Int, lastIncremented: NSDate?) {
+        self.list = list
+        self.book = book
+        self.chapter = chapter
+        self.lastIncremented = lastIncremented
+    }
+    
     override var description: String {
         return "\(self.book.osisId) \(self.chapter) (List: \(self.list.id))"
     }
@@ -57,6 +65,7 @@ class Bookmark : NSObject, NSCoding {
             book = nextBook()
             chapter = 1
         }
+        lastIncremented = NSDate()
     }
     
     func dec() {
@@ -67,6 +76,7 @@ class Bookmark : NSObject, NSCoding {
             book = prevBook()
             chapter = book.chapters
         }
+        lastIncremented = nil
     }
     
     fileprivate func prevBook() -> Book {
@@ -93,17 +103,19 @@ class Bookmark : NSObject, NSCoding {
         aCoder.encode(list.id, forKey: PropertyKey.listIdKey)
         aCoder.encode(book.id, forKey: PropertyKey.bookIdKey)
         aCoder.encode(chapter, forKey: PropertyKey.chapterKey)
+        aCoder.encode(lastIncremented, forKey: PropertyKey.lastIncrementedKey)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         let listId = aDecoder.decodeInteger(forKey: PropertyKey.listIdKey)
         let bookId = aDecoder.decodeInteger(forKey: PropertyKey.bookIdKey)
         let chapter = aDecoder.decodeInteger(forKey: PropertyKey.chapterKey)
+        let lastIncremented = aDecoder.decodeObject(forKey: PropertyKey.lastIncrementedKey) as? NSDate
         
         let list = ReadingList.byId[listId]!
         let book = Book.byId[bookId]!
         
-        self.init(list:list, book:book, chapter:chapter)
+        self.init(list:list, book:book, chapter:chapter, lastIncremented: lastIncremented)
     }
     
     static func getAll() -> [Bookmark] {

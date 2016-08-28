@@ -122,7 +122,15 @@ class BookmarkViewController: UIViewController, UITableViewDataSource, UITableVi
             
             s.append(NSAttributedString(string: txt, attributes: attrs))
         }
+        
         cell.booksLabel.attributedText = s
+        
+        if ((bookmark.lastIncremented) != nil && NSCalendar.current.isDateInToday(bookmark.lastIncremented! as Date)) {
+            cell.backgroundColor = UIColor(red:0.67, green:0.98, blue:0.73, alpha:1.0)
+        }
+        else {
+            cell.backgroundColor = UIColor.white
+        }
     }
     
     // MARK: NSCoding
