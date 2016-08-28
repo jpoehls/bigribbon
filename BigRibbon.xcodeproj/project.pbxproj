@@ -18,7 +18,7 @@
 		4299AC3A1D71422A00D81E6F /* PropertyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299AC391D71422A00D81E6F /* PropertyKey.swift */; };
 		4299AC3C1D71FE4200D81E6F /* ReadingListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299AC3B1D71FE4200D81E6F /* ReadingListTests.swift */; };
 		4299AC3E1D7203B000D81E6F /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299AC3D1D7203B000D81E6F /* BookmarkTableViewCell.swift */; };
-		4299AC401D721AD500D81E6F /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299AC3F1D721AD500D81E6F /* BookmarkTableViewController.swift */; };
+		42C6F46A1D736FA100B0C9F8 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C6F4691D736FA100B0C9F8 /* BookmarkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,7 @@
 		4299AC391D71422A00D81E6F /* PropertyKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyKey.swift; sourceTree = "<group>"; };
 		4299AC3B1D71FE4200D81E6F /* ReadingListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingListTests.swift; sourceTree = "<group>"; };
 		4299AC3D1D7203B000D81E6F /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
-		4299AC3F1D721AD500D81E6F /* BookmarkTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewController.swift; sourceTree = "<group>"; };
+		42C6F4691D736FA100B0C9F8 /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		42ED7E781D710A2200388764 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,7 +101,7 @@
 				4299AC371D7141BA00D81E6F /* Bookmark.swift */,
 				4299AC391D71422A00D81E6F /* PropertyKey.swift */,
 				4299AC3D1D7203B000D81E6F /* BookmarkTableViewCell.swift */,
-				4299AC3F1D721AD500D81E6F /* BookmarkTableViewController.swift */,
+				42C6F4691D736FA100B0C9F8 /* BookmarkViewController.swift */,
 			);
 			name = BigRibbon;
 			path = src/BigRibbon;
@@ -223,8 +223,8 @@
 			files = (
 				4299AC381D7141BA00D81E6F /* Bookmark.swift in Sources */,
 				424E895C1D6CAF87009422D6 /* AppDelegate.swift in Sources */,
-				4299AC401D721AD500D81E6F /* BookmarkTableViewController.swift in Sources */,
 				4299AC361D7141B300D81E6F /* ReadingList.swift in Sources */,
+				42C6F46A1D736FA100B0C9F8 /* BookmarkViewController.swift in Sources */,
 				4299AC3E1D7203B000D81E6F /* BookmarkTableViewCell.swift in Sources */,
 				4299AC3A1D71422A00D81E6F /* PropertyKey.swift in Sources */,
 				4299AC341D7141A700D81E6F /* Book.swift in Sources */,

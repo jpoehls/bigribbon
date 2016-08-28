@@ -1,22 +1,19 @@
-//
-//  BookmarkTableViewController.swift
-//  BibleReadingList
-//
-//  Created by Joshua Poehls on 8/27/16.
-//
-//
-
 import UIKit
 
-class BookmarkTableViewController: UITableViewController {
+class BookmarkViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: Properties
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var bookmarks = [Bookmark]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         // Load any saved bookmarks, otherwise load default data.
         if let savedBookmarks = loadBookmarks() {
             bookmarks += savedBookmarks
@@ -40,23 +37,23 @@ class BookmarkTableViewController: UITableViewController {
             Bookmark(list: ReadingList.profGrantHorner10)
         ]
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookmarks.count
     }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "BookmarkTableViewCell"
@@ -65,7 +62,7 @@ class BookmarkTableViewController: UITableViewController {
         
         // Fetches the appropriate bookmark for the data source layout.
         let bookmark = bookmarks[(indexPath as NSIndexPath).row]
-
+        
         cell.nameLabel.text = "List " + bookmark.list.id.description
         cell.daysLabel.text = bookmark.list.chapters.description + " days"
         renderBookmarkPosition(cell, bookmark: bookmark)
@@ -81,7 +78,7 @@ class BookmarkTableViewController: UITableViewController {
             let bookmark = self.bookmarks[idx]
             self.incrementBookmark(cell, bookmark: bookmark)
         }
-
+        
         return cell
     }
     
@@ -116,8 +113,9 @@ class BookmarkTableViewController: UITableViewController {
             print("Failed to save bookmarks...")
         }
     }
-
+    
     func loadBookmarks() -> [Bookmark]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Bookmark.ArchiveURL.path) as? [Bookmark]
     }
+
 }
