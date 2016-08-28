@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4QZ-uP-rGq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4QZ-uP-rGq">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BookmarkTableViewCell" rowHeight="80" id="nCC-Eg-ZO1" customClass="BookmarkTableViewCell" customModule="BigRibbon" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BookmarkTableViewCell" id="nCC-Eg-ZO1" customClass="BookmarkTableViewCell" customModule="BigRibbon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nCC-Eg-ZO1" id="1Aq-CC-nTZ">
-                                            <frame key="frameInset" width="375" height="79"/>
+                                            <frame key="frameInset" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="oPu-GG-uGd">
@@ -34,7 +34,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="0lz-bn-g8T"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                             <state key="normal" title="&lt;"/>
                                                             <connections>
                                                                 <action selector="prevButtonPressed:" destination="nCC-Eg-ZO1" eventType="touchUpInside" id="1Qb-5c-Fe2"/>
@@ -49,7 +49,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="180 days" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XV-o1-4wz">
-                                                                    <frame key="frameInset" minY="15" width="60" height="65"/>
+                                                                    <frame key="frameInset" minY="15" width="60" height="45"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jq1-xi-H9E">
                                                             <attributedString key="attributedText">
-                                                                <fragment content="Isa, Jer, Lam, Ezek, Dan, Hos, Joel, Amos, Obad, Jonah, Mic, Nah, ">
+                                                                <fragment content="Blah, Blah, Blah, Isa, Jer, Lam, Ezek, Dan, Hos, Joel, Amos, Obad, Jonah, Mic, Nah, ">
                                                                     <attributes>
                                                                         <color key="NSColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <font key="NSFont" size="12" name="HelveticaNeue"/>
@@ -89,7 +89,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="5Jm-JR-Aqg"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                             <state key="normal" title="&gt;"/>
                                                             <connections>
                                                                 <action selector="nextButtonPressed:" destination="nCC-Eg-ZO1" eventType="touchUpInside" id="X42-Xl-PEg"/>
