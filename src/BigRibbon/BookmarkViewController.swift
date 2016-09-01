@@ -77,7 +77,26 @@ class BookmarkViewController: UIViewController, UITableViewDataSource, UITableVi
             self.incrementBookmark(cell, bookmark: bookmark)
         }
         
+        cell.bookmarkAction = { (cell) in
+            let idx = (tableView.indexPath(for: cell)! as NSIndexPath).row
+            let bookmark = self.bookmarks[idx]
+            self.readBookmark(cell, bookmark: bookmark)
+        }
+        
         return cell
+    }
+    
+    func readBookmark(_ cell: BookmarkTableViewCell, bookmark: Bookmark) {
+
+        let url = URL(string: "bible://" + bookmark.book.osisId + "+" + bookmark.chapter.description + ":1")
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.openURL(url!)
+        }
+        else {
+            let errAlert = UIAlertController(title: "Oops", message: "Can't open bible://", preferredStyle: UIAlertControllerStyle.alert)
+            errAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(errAlert, animated: true, completion: nil)
+        }
     }
     
     func incrementBookmark(_ cell: BookmarkTableViewCell, bookmark: Bookmark) {
@@ -111,8 +130,14 @@ class BookmarkViewController: UIViewController, UITableViewDataSource, UITableVi
             if (book === bookmark.book) {
                 txt = book.name + "\u{00a0}" + bookmark.chapter.description
                 attrs = [
-                    NSFontAttributeName:UIFont.boldSystemFont(ofSize: cell.booksLabel.font.pointSize),
+                    NSFontAttributeName:UIFont.boldSystemFont(ofSize: cell.booksButton.titleLabel!.font.pointSize),
                     NSForegroundColorAttributeName:cell.nameLabel.textColor
+                ]
+            }
+            else {
+                attrs = [
+                    NSFontAttributeName:UIFont.systemFont(ofSize: cell.booksButton.titleLabel!.font.pointSize),
+                    NSForegroundColorAttributeName:cell.daysLabel.textColor
                 ]
             }
             
@@ -123,10 +148,13 @@ class BookmarkViewController: UIViewController, UITableViewDataSource, UITableVi
             s.append(NSAttributedString(string: txt, attributes: attrs))
         }
         
-        cell.booksLabel.attributedText = s
+        cell.booksButton.setAttributedTitle(s, for: UIControlState.normal)
         
-        if ((bookmark.lastIncremented) != nil && NSCalendar.current.isDateInToday(bookmark.lastIncremented! as Date)) {
+        if (bookmark.incrementedToday()) {
             cell.backgroundColor = UIColor(red:0.67, green:0.98, blue:0.73, alpha:1.0)
+        }
+        else if (bookmark.incrementedYesterday()) {
+            cell.backgroundColor = UIColor(red:0.67, green:0.98, blue:0.73, alpha:0.3)
         }
         else {
             cell.backgroundColor = UIColor.white

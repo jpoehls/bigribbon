@@ -118,16 +118,21 @@ class Bookmark : NSObject, NSCoding {
         self.init(list:list, book:book, chapter:chapter, lastIncremented: lastIncremented)
     }
     
-    static func getAll() -> [Bookmark] {
-        // TODO: load them from the DB
-        return [Bookmark]();
+    func incrementedToday() -> Bool {
+        if ((self.lastIncremented) != nil && NSCalendar.current.isDateInToday(self.lastIncremented! as Date)) {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
-    static func saveAll(_ bookmarks: [Bookmark]) {
-        // TODO: save to DB, overwrite any existing
-    }
-    
-    static func createNew() -> [Bookmark] {
-        return [Bookmark]();
+    func incrementedYesterday() -> Bool {
+        if ((self.lastIncremented) != nil && NSCalendar.current.isDateInYesterday(self.lastIncremented! as Date)) {
+            return true
+        }
+        else {
+            return false
+        }
     }
 }
